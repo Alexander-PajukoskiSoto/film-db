@@ -1,9 +1,9 @@
 import React from 'react'
-
-export default function MovieDB() {
+import Movie from './Movie'
+export default function MovieDB({movies}) {
   return (
-    <div>
-      Hello world
-    </div>
+    movies.map(movie=>{
+        return<Movie key={movie.id} movie={movie}/>
+    })
   )
 }
