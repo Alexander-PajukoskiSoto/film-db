@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import MovieDB from './MovieDB'
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [movies, setMovie]= useState([])
@@ -8,7 +9,10 @@ function App() {
   function addMovie(e) {
     const name = movieNameRef.current.value;
     if(name==='') return
-    console.log(name)
+    setMovie(prevMovie=>{
+      return [...prevMovie,{id:uuidv4(),name:name}]
+    })
+    movieNameRef.current.value = null;
   }
   return (
     <>
